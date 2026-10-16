@@ -213,7 +213,7 @@ ORDER BY ratio DESC;
 - Result:
 <img width="802" height="187" alt="image" src="https://github.com/user-attachments/assets/03ed9d5f-7c9e-4cd6-80b3-7c3a9bba31c9" />
 
-## **Query 08: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity was ordered**
+## **Query 08: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017**
 - SQL code:
 ```SQL
 SELECT DISTINCT    
@@ -244,4 +244,35 @@ ORDER BY quantity DESC;
 - Result
 <img width="550" height="542" alt="image" src="https://github.com/user-attachments/assets/5b8f3a70-9da1-4830-8b9d-2106757be229" />
 
-
+## **Query 9: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. For example, 100% product view then 40% add_to_cart and 10% purchase**
+- SQL code:
+```SQL
+WITH
+  smr AS (
+    SELECT
+      LEFT(date, 6) AS month
+      ,SUM(CASE WHEN eCommerceAction.action_type = '2' THEN 1 ELSE 0 END)
+        AS num_product_view
+      ,SUM(CASE WHEN eCommerceAction.action_type = '3' THEN 1 ELSE 0 END)
+        AS num_addtocart
+      ,SUM(
+        CASE WHEN eCommerceAction.action_type = '6' 
+                  AND product.productRevenue IS NOT NULL 
+                  THEN 1 ELSE 0 END)
+        AS num_purchase
+    FROM
+      `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
+      UNNEST(hits) hits,
+      UNNEST(product) product
+    WHERE _table_suffix BETWEEN '0101' AND '0331'
+    GROUP BY LEFT(date, 6)
+    ORDER BY month
+  )
+SELECT
+  *
+  ,ROUND(num_addtocart * 100.0 / num_product_view, 2) AS add_to_cart_rate
+  ,ROUND(num_purchase * 100.0 / num_product_view, 2) AS purchase_rate
+FROM smr;
+```
+- Result:
+<img width="1107" height="192" alt="image" src="https://github.com/user-attachments/assets/b38a019d-913f-403a-9b4e-36a66605e83d" />
