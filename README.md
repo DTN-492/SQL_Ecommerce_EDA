@@ -21,7 +21,7 @@ Click on the "ga_sessions_" table to open it.
 # IV. Exploring the Dataset
 In this project, I will write 08 query in Bigquery base on Google Analytics dataset
 
-## **Query 01: calculate total visit, pageview, transaction for Jan, Feb and March 2017**
+## **Query 01: Calculate total visit, pageview, transaction for Jan, Feb and March 2017**
 - SQL code:
 ```SQL
 SELECT
@@ -244,7 +244,7 @@ ORDER BY quantity DESC;
 - Result
 <img width="550" height="542" alt="image" src="https://github.com/user-attachments/assets/5b8f3a70-9da1-4830-8b9d-2106757be229" />
 
-## **Query 09: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. For example, 100% product view then 40% add_to_cart and 10% purchase**
+## **Query 09: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and Mar 2017**
 - SQL code:
 ```SQL
 WITH
