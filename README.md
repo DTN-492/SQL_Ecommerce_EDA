@@ -153,14 +153,37 @@ WITH
   )
 SELECT
   p.month
-  ,avg_pageviews_purchase
-  ,avg_pageviews_non_purchase
+  ,ROUND(avg_pageviews_purchase,2) AS avg_pageviews_purchase
+  ,ROUND(avg_pageviews_non_purchase,2) AS avg_pageviews_non_purchase
 FROM pur AS p
 INNER JOIN nonpur AS n
   USING (month)
 ORDER BY month;
 ```
 - Result:
+<img width="808" height="172" alt="Screenshot 2026-10-16 093539" src="https://github.com/user-attachments/assets/df73fcf2-afa0-40ab-ad02-943b09b7043c" />
+## **Query 06: Average number of transactions per user that made a purchase in July 2017**
+- SQL code:
+```SQL
+SELECT
+  '201707' AS Month
+  ,SUM(
+    CASE
+      WHEN totals.transactions IS NOT NULL THEN totals.transactions
+      ELSE 0
+      END)
+    / COUNT(DISTINCT fullVisitorId) AS Avg_total_transactions_per_user
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
+  UNNEST(hits) hits,
+  UNNEST(product) product
+WHERE
+  totals.transactions >= 1
+  AND productRevenue IS NOT NULL;
+```
+- Result:
+<img width="615" height="131" alt="Screenshot 2026-10-16 093740" src="https://github.com/user-attachments/assets/7eacaa36-240b-490f-981f-d605b2cfaeed" />
+
 
 
 
