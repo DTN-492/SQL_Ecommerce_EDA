@@ -162,6 +162,7 @@ ORDER BY month;
 ```
 - Result:
 <img width="808" height="172" alt="Screenshot 2026-10-16 093539" src="https://github.com/user-attachments/assets/df73fcf2-afa0-40ab-ad02-943b09b7043c" />
+
 ## **Query 06: Average number of transactions per user that made a purchase in July 2017**
 - SQL code:
 ```SQL
@@ -184,6 +185,63 @@ WHERE
 - Result:
 <img width="615" height="131" alt="Screenshot 2026-10-16 093740" src="https://github.com/user-attachments/assets/7eacaa36-240b-490f-981f-d605b2cfaeed" />
 
+## **Query 07: Revenue contribution by device (desktop,mobile...) in 2017**
+- SQL code:
+```SQL
+WITH
+  rev AS (
+    SELECT
+      device.deviceCategory AS device
+      ,ROUND(SUM(productRevenue) / pow(10, 6), 2) AS revenue_by_device
+    FROM
+      `bigquery-public-data.google_analytics_sample.ga_sessions_*`,
+      UNNEST(hits) hits,
+      UNNEST(product) product
+    WHERE
+      totals.transactions IS NOT NULL
+      AND product.productRevenue IS NOT NULL
+    GROUP BY device
+  )
+SELECT
+  *,
+  SUM(revenue_by_device) OVER () AS total_revenue
+  ,ROUND(revenue_by_device * 100.0 / (SELECT SUM(revenue_by_device) FROM rev), 2)
+    AS ratio
+FROM rev
+ORDER BY ratio DESC;
+```
+- Result:
+<img width="802" height="187" alt="image" src="https://github.com/user-attachments/assets/03ed9d5f-7c9e-4cd6-80b3-7c3a9bba31c9" />
 
+## **Query 08: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity was ordered**
+- SQL code:
+```SQL
+SELECT DISTINCT    
+  (v2ProductName) AS other_purchased_products
+  ,SUM(productQuantity) AS quantity
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
+  UNNEST(hits) hits,
+  UNNEST(product) product
+WHERE
+  fullVisitorId IN ( -- Subquery to get customer who purchased YT men vintage Henley
+    SELECT fullVisitorId
+    FROM
+      `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
+      UNNEST(hits) hits,
+      UNNEST(product) product
+    WHERE
+      v2ProductName = 'YouTube Men\'s Vintage Henley'
+      AND product.productRevenue IS NOT NULL
+      AND totals.transactions >= 1
+  )
+  AND v2ProductName <> 'YouTube Men\'s Vintage Henley'
+  AND product.productRevenue IS NOT NULL
+  AND totals.transactions >= 1
+GROUP BY other_purchased_products
+ORDER BY quantity DESC;
+```
+- Result
+<img width="550" height="542" alt="image" src="https://github.com/user-attachments/assets/5b8f3a70-9da1-4830-8b9d-2106757be229" />
 
 
