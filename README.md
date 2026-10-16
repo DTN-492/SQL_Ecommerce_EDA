@@ -244,7 +244,7 @@ ORDER BY quantity DESC;
 - Result
 <img width="550" height="542" alt="image" src="https://github.com/user-attachments/assets/5b8f3a70-9da1-4830-8b9d-2106757be229" />
 
-## **Query 9: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. For example, 100% product view then 40% add_to_cart and 10% purchase**
+## **Query 09: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. For example, 100% product view then 40% add_to_cart and 10% purchase**
 - SQL code:
 ```SQL
 WITH
@@ -276,3 +276,32 @@ FROM smr;
 ```
 - Result:
 <img width="1107" height="192" alt="image" src="https://github.com/user-attachments/assets/b38a019d-913f-403a-9b4e-36a66605e83d" />
+
+## **Query 10: Calculate revenue by week from May to July 2017 and culmulative revenue**
+- SQL code:
+```SQL
+WITH
+  rev AS (
+    SELECT
+      CONCAT('2017', '-', EXTRACT(WEEK FROM PARSE_DATE("%Y%m%d", date))) AS week
+      ,ROUND(SUM(productRevenue) / pow(10, 6), 2) AS weekly_revenue
+    FROM
+      `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
+      UNNEST(hits) hits,
+      UNNEST(product) product
+    WHERE
+      _table_suffix BETWEEN '0501' AND '0731'
+      AND productRevenue IS NOT NULL
+    GROUP BY week
+    ORDER BY week
+  )
+SELECT
+  *
+  ,SUM(weekly_revenue)
+    OVER (ORDER BY week ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+    AS cumulative_revenue
+FROM rev
+ORDER BY week;
+```
+- Result:
+<img width="647" height="527" alt="image" src="https://github.com/user-attachments/assets/de42120e-76db-494f-8cf4-ac1b2f066da6" />
