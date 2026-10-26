@@ -187,6 +187,10 @@ ORDER BY month;
 - Result:
 <img width="808" height="172" alt="Screenshot 2026-10-16 093539" src="https://github.com/user-attachments/assets/df73fcf2-afa0-40ab-ad02-943b09b7043c" />
 
+**Insight:** Non-purchasing users browse significantly more pages than those who convert, indicating that higher engagement in browsing does not necessarily correlate with a higher likelihood of purchase.
+
+**Recommend:** Analyze the navigation paths of these high-engagement non-purchasers to identify potential friction points and implement targeted nudges to streamline their path to purchase.
+
 ## **Query 06: Average number of transactions per user that made a purchase in July 2017**
 - SQL code:
 ```SQL
@@ -237,6 +241,10 @@ ORDER BY ratio DESC;
 - Result:
 <img width="802" height="187" alt="image" src="https://github.com/user-attachments/assets/03ed9d5f-7c9e-4cd6-80b3-7c3a9bba31c9" />
 
+**Insight:** Desktop leads device revenue at 167,474.74, well ahead of mobile at 56,553.10 and tablet at 10,748.13.
+
+**Recommend:** Prioritize improving mobile and tablet conversion.
+
 ## **Query 08: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017**
 - SQL code:
 ```SQL
@@ -267,6 +275,10 @@ ORDER BY quantity DESC;
 ```
 - Result
 <img width="550" height="542" alt="image" src="https://github.com/user-attachments/assets/5b8f3a70-9da1-4830-8b9d-2106757be229" />
+
+**Insight:** Google Sunglasses is the most frequently co-purchased item, with 20 purchases—nearly three times the next item’s 7.
+
+**Recommend:** Feature Google Sunglasses in cross-sell recommendations and test pairing it with the next most frequently co-purchased products.
 
 ## **Query 09: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and Mar 2017**
 - SQL code:
@@ -301,6 +313,10 @@ FROM smr;
 - Result:
 <img width="1107" height="192" alt="image" src="https://github.com/user-attachments/assets/b38a019d-913f-403a-9b4e-36a66605e83d" />
 
+**Insight:** From January to March 2017, add-to-cart and purchase rates rose steadily, with March reaching the highest purchase rate at 12.64%.
+
+**Recommend:** Identify what improved the customer journey by March and apply those changes to sustain the conversion gains.
+
 ## **Query 10: Calculate revenue by week from May to July 2017 and culmulative revenue**
 - SQL code:
 ```SQL
@@ -329,3 +345,8 @@ ORDER BY week;
 ```
 - Result:
 <img width="647" height="527" alt="image" src="https://github.com/user-attachments/assets/de42120e-76db-494f-8cf4-ac1b2f066da6" />
+
+**Insight:** Weekly revenue fluctuated, peaking at 56,675.36 in week 2017-29 after a sharp rise from 42,013.08 in week 2017-28.
+
+**Recommend:** Investigate what drove the week 2017-28–29 increase and test similar promotions or merchandising strategies in future weeks.
+
