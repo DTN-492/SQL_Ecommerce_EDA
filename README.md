@@ -18,7 +18,16 @@ The eCommerce dataset is stored in a public Google BigQuery dataset. To access t
 - Enter the project ID **"bigquery-public-data.google_analytics_sample.ga_sessions"** and click "Enter".
 - Click on the **"ga_sessions_"** table to open it.
 
-# IV. Exploring the Dataset
+# IV. Overview:
+The dataset contains Google Analytics data from the Google Merchandise Store, a real ecommerce store. The Google Merchandise Store sells Google branded merchandise. It includes the following kinds of information:
+- Traffic source data: information about where website visitors originate. This includes data about organic traffic, paid search traffic, display traffic, etc.
+- Content data: information about the behavior of users on the site. This includes the URLs of pages that visitors look at, how they interact with content, etc.
+- Transactional data: information about the transactions that occur on the Google Merchandise Store website.
+
+# V. Business questions:
+Explore and analyze key e-commerce metrics, then provide insights and recommendations.
+
+# VI. Exploring the Dataset
 
 ## **Query 01: Calculate total visit, pageview, transaction for Jan, Feb and March 2017**
 - SQL code:
