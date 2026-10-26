@@ -45,6 +45,10 @@ ORDER BY month;
 - Result:
 <img width="810" height="200" alt="image" src="https://github.com/user-attachments/assets/9a1af333-d17b-433a-8da8-75fd58b51514" />
 
+**Insight:** Transactions grew steadily over the quarter, with a significant spike in March that drove both the highest volume of visits and the strongest conversion rate.
+
+**Recommend:** Analyze the specific marketing campaigns or product launches implemented in March to identify the drivers of this growth and replicate those strategies in future months.
+
 ## **Query 02: Bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit)**
 - SQL code:
 ```SQL
@@ -64,6 +68,10 @@ FROM
 ```
 - Result:
 <img width="815" height="545" alt="image" src="https://github.com/user-attachments/assets/287d32d8-3546-4319-a789-5bce7d24f9aa" />
+
+**Insight:** Reddit demonstrates the highest user engagement with a significantly lower bounce rate (28.57%) compared to high-volume sources like Google and YouTube.
+
+**Recommend:** Scale targeted marketing efforts on Reddit to capitalize on this high-intent traffic and increase the overall volume of engaged visitors.
 
 ## **Query 03: Revenue by traffic source by week, by month in June 2017**
 - SQL code:
@@ -100,6 +108,10 @@ ORDER BY source, time_type, time;
 - Result:
 <img width="990" height="512" alt="image" src="https://github.com/user-attachments/assets/2692f372-74d9-4f14-aec5-c387d517eaa6" />
 
+**Insight:** Direct traffic is the sole driver of revenue in this period, while all other acquisition channels are currently failing to generate any sales.
+
+**Recommend:** Audit the conversion funnels and landing pages for underperforming channels, particularly paid sources like Adwords, to identify why they are not converting.
+
 ## **Query 04: Conversion rate by traffic source in 2017**
 - SQL code:
 ```SQL
@@ -124,6 +136,10 @@ ORDER BY conversion_rate DESC;
 ```
 - Result:
 <img width="897" height="192" alt="image" src="https://github.com/user-attachments/assets/df9fbe34-38f8-435a-8370-5ff61c5da91e" />
+
+**Insight:** While Google drives a massive volume of traffic, its conversion rate (0.92%) is significantly lower than both direct and DFA channels.
+
+**Recommend:** Review Google's keyword targeting and landing page relevance to better align incoming traffic with user intent and improve the conversion rate.
 
 ## **Query 05: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017**
 - SQL code:
