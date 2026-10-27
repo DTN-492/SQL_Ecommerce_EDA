@@ -5,6 +5,14 @@
 [**II. Requirements**](#ii-requirements)
 
 [**III. Dataset Access**](#iii-dataset-access)
+
+[**IV. Overview**](#iv-overview)
+
+[**V. Business questions**](#v-business-questions)
+
+[**VI. Exploring the Dataset**](#vi-exploring-the-dataset)
+
+[**VII. Summary**](#vii-summary)
 # I. Introduction
 This project contains an eCommerce dataset that I will explore using SQL on Google BigQuery. The dataset is based on the Google Analytics public dataset and contains data from an eCommerce website.
 
@@ -355,7 +363,7 @@ ORDER BY week;
 
 **Recommend:** Investigate what drove the week 2017-28–29 increase and test similar promotions or merchandising strategies in future weeks.
 
-# VI. Summary:
+# VII. Summary:
 | Insight                                                                                                                                                                                               | Recommend                                                                                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Transactions   grew steadily over the quarter, with a significant spike in March that drove   both the highest volume of visits and the strongest conversion rate.                                    | Analyze the   specific marketing campaigns or product launches implemented in March to   identify the drivers of this growth and replicate those strategies in future   months.      |
