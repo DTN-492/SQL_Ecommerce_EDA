@@ -12,8 +12,7 @@
 
 [**VI. Summary**](#vi-summary)
 # I. Introduction
-This project contains an eCommerce dataset that I will explore using SQL on Google BigQuery. The dataset is based on the Google Analytics public dataset and contains data from an eCommerce website.
-The dataset contains Google Analytics data from the Google Merchandise Store, a real ecommerce store. The Google Merchandise Store sells Google branded merchandise. It includes the following kinds of information:
+This project explores an eCommerce dataset using SQL in Google BigQuery. Based on the publicly available Google Analytics dataset, it contains data from the Google Merchandise Store, a real online retailer that sells Google-branded merchandise. The dataset includes the following types of information:
 - Traffic source data: information about where website visitors originate. This includes data about organic traffic, paid search traffic, display traffic, etc.
 - Content data: information about the behavior of users on the site. This includes the URLs of pages that visitors look at, how they interact with content, etc.
 - Transactional data: information about the transactions that occur on the Google Merchandise Store website.
