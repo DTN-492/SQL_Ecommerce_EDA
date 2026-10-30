@@ -6,15 +6,17 @@
 
 [**III. Dataset Access**](#iii-dataset-access)
 
-[**IV. Overview**](#iv-overview)
+[**IV. Business questions**](#vi-business-questions)
 
-[**V. Business questions**](#v-business-questions)
+[**V. Exploring the Dataset**](#v-exploring-the-dataset)
 
-[**VI. Exploring the Dataset**](#vi-exploring-the-dataset)
-
-[**VII. Summary**](#vii-summary)
+[**VI. Summary**](#vi-summary)
 # I. Introduction
 This project contains an eCommerce dataset that I will explore using SQL on Google BigQuery. The dataset is based on the Google Analytics public dataset and contains data from an eCommerce website.
+The dataset contains Google Analytics data from the Google Merchandise Store, a real ecommerce store. The Google Merchandise Store sells Google branded merchandise. It includes the following kinds of information:
+- Traffic source data: information about where website visitors originate. This includes data about organic traffic, paid search traffic, display traffic, etc.
+- Content data: information about the behavior of users on the site. This includes the URLs of pages that visitors look at, how they interact with content, etc.
+- Transactional data: information about the transactions that occur on the Google Merchandise Store website.
 
 # II. Requirements
 - [Google Cloud Platform account](https://cloud.google.com/)
@@ -31,16 +33,10 @@ The eCommerce dataset is stored in a public Google BigQuery dataset. To access t
 - Enter the project ID **"bigquery-public-data.google_analytics_sample.ga_sessions"** and click "Enter".
 - Click on the **"ga_sessions_"** table to open it.
 
-# IV. Overview:
-The dataset contains Google Analytics data from the Google Merchandise Store, a real ecommerce store. The Google Merchandise Store sells Google branded merchandise. It includes the following kinds of information:
-- Traffic source data: information about where website visitors originate. This includes data about organic traffic, paid search traffic, display traffic, etc.
-- Content data: information about the behavior of users on the site. This includes the URLs of pages that visitors look at, how they interact with content, etc.
-- Transactional data: information about the transactions that occur on the Google Merchandise Store website.
-
-# V. Business questions:
+# VI. Business questions:
 Explore and analyze key e-commerce metrics, then provide insights and recommendations.
 
-# VI. Exploring the Dataset
+# V. Exploring the Dataset
 
 ## **Query 01: Calculate total visit, pageview, transaction for Jan, Feb and March 2017**
 - SQL code:
@@ -363,7 +359,7 @@ ORDER BY week;
 
 **Recommend:** Investigate what drove the week 2017-28–29 increase and test similar promotions or merchandising strategies in future weeks.
 
-# VII. Summary:
+# VI. Summary:
 | Insight                                                                                                                                                                                               | Recommend                                                                                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Transactions   grew steadily over the quarter, with a significant spike in March that drove   both the highest volume of visits and the strongest conversion rate.                                    | Analyze the   specific marketing campaigns or product launches implemented in March to   identify the drivers of this growth and replicate those strategies in future   months.      |
